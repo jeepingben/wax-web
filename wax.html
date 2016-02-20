@@ -1,0 +1,50 @@
+<head>
+    <link rel="stylesheet" href="wax.css">
+</head>
+
+<body>
+    <div id=header>
+        <h1>Wax Chooser-web</h1>
+    </div>
+
+    <div id=conditionsDiv>
+        <form id='conditionsForm'>
+            <div id='brandsDiv'>
+                Brands
+
+            </div>
+            <input id='unitsF' type='radio' value='Imperial' name='units' checked>
+            <label for='unitsF'><span><span></span></span>Imperial</label>
+            <input id='unitsC' name='units' type='radio' value='Metric'>
+            <label for='unitsC'><span><span></span></span>Metric</label>
+
+            <div id=temperature>
+                Temperature
+                <span id='tempMinLabel'>-40</span>
+                <input id='tempSlider' type='range' min=-40 max=40 name='temperature'><span id='tempMaxLabel'>40</span>
+                <div id='tempCurDiv'>0</div>
+            </div>
+
+            <div id='conditionsDiv'>
+                Snow Conditions
+
+                <input id='snowTypeNew' type='radio' value='New' name='conditions' checked>
+                <label for='snowTypeNew'><span><span></span></span>New</label>
+                <input id='snowTypeTrans' type='radio' value='Transformed' name='conditions' checked>
+                <label for='snowTypeTrans'><span><span></span></span>Transformed</label>
+                <input id='snowTypeIce' type='radio' value='Ice' name='conditions' checked>
+                <label for='snowTypeIce'><span><span></span></span>Ice</label>
+                <input id='snowTypeCorn' type='radio' value='Corn' name='conditions' checked>
+                <label for='snowTypeCorn'><span><span></span></span>Corn</label>
+            </div>
+            <input id='getWax' type=submit value='Get Wax' method='GET'>
+        </form>
+
+    </div>
+
+    <div id=resultsDiv class="hiddenResults">
+        <img id='waxImage' src="" alt=""></img>
+    </div>
+</body>
+
+<script src="wax-gui.js"></script>

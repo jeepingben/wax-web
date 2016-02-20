@@ -1,0 +1,5 @@
+{
+	"name":"wax-getter",
+	"scripts":"wax-rest.js",
+	"require":["url","sqlite3","http"]
+}
