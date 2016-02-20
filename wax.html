@@ -1,5 +1,6 @@
 <head>
     <link rel="stylesheet" href="wax.css">
+    <meta charset="utf-8"/>
 </head>
 
 <body>
@@ -37,13 +38,14 @@
                 <input id='snowTypeCorn' type='radio' value='Corn' name='conditions' checked>
                 <label for='snowTypeCorn'><span><span></span></span>Corn</label>
             </div>
-            <input id='getWax' type=submit value='Get Wax' method='GET'>
+            <input id='getWax' class='submitButton' type=submit value='Get Wax' method='GET'>
         </form>
 
     </div>
 
     <div id=resultsDiv class="hiddenResults">
         <img id='waxImage' src="" alt=""></img>
+        <div id='resultsText' class='resultText'></div>
     </div>
 </body>
 

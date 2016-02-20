@@ -50,7 +50,7 @@ input[type=checkbox]:not(old):checked + label > span:before{
   content     : '✓';
   display     : block;
   width       : 1em;
-  color       : rgb(153,204,102);
+  color       : rgb(142, 84, 255);
   font-size   : 0.875em;
   line-height : 1em;
   text-align  : center;
@@ -63,7 +63,7 @@ input[type=radio]:not(old):checked + label > span > span{
   width            : 0.5em;
   height           : 0.5em;
   margin           : 0.125em;
-  border           : 0.0625em solid rgb(115,153,77);
+  border           : 0.0625em solid rgb(42, 84, 255);
   border-radius    : 0.125em;
   background       : rgb(153,204,102);
   background-image :    -moz-linear-gradient(rgb(63, 0, 186),rgb(142, 84, 255));
@@ -72,6 +72,29 @@ input[type=radio]:not(old):checked + label > span > span{
   background-image : -webkit-linear-gradient(rgb(63, 0, 186),rgb(142, 84, 255));
   background-image :         linear-gradient(rgb(63, 0, 186),rgb(142, 84, 255));
 }
+
+.submitButton {
+	background-color:rgb(44, 160, 202);
+	padding:10px;
+	position:relative;
+	font-family: MuseoSans,serif;
+	font-size:16px;
+	text-decoration:none;
+	color:#fff;
+	border: solid 1px rgb(14, 50, 63);
+	background-image: linear-gradient(bottom, rgb(171,27,27) 0%, rgb(212,51,51) 100%);
+	border-radius: 5px;
+}
+
+.submitButton:active {
+	padding-bottom:9px;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:11px;
+	top:1px;
+	background-image: linear-gradient(bottom, rgb(171,27,27) 100%, rgb(44, 160, 202) 0%);
+}
+
 .visibleResults {
   visibility: visible
 }
@@ -80,3 +103,9 @@ input[type=radio]:not(old):checked + label > span > span{
   visibility: hidden
 }
 
+.resultText {
+ 	font-family: MuseoSans,serif;
+	font-size:16px;
+	text-decoration:none;
+	color:#fff;
+}
