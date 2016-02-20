@@ -1,0 +1,9 @@
+{
+ "name":"waxChooser",
+ "version":"0.0.1",
+ "main":"main.js",
+ "require":["sqlite3"],
+ "scripts" : {
+	"start":"electron main.js"
+ }
+}

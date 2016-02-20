@@ -4,15 +4,23 @@ var http = require('http');
 var url = require('url');
 
 var server = http.createServer(function(req, res) {
-    var dbFile = "waxdb.db";
+    
+var headers = {};
+    headers["Content-Type"] = "application/json";
+    // respond to the request
+    res.writeHead(200, headers);
+    getWax(req,res);
+	
+});
+
+function getWax(req,res, callback) {
+	var result = "";
+	var dbFile = "REST/waxdb.db";
     var db = new sqlite3.Database(dbFile);
     //db.on('trace', function(stmt) {
     //	 console.log(stmt);
     //});
-    var headers = {};
-    headers["Content-Type"] = "application/json";
-    // respond to the request
-    res.writeHead(200, headers);
+    
     var url_parts = url.parse(req.url, true);
     var query = url_parts.query;
 
@@ -59,14 +67,17 @@ var server = http.createServer(function(req, res) {
                 '"name":"none"' +
                 '}';
         }
-        res.end(query.callback + '(JSON.parse(\'' + jsonData + '\'));');
+        
+	if (!!res.end) {
+ 	res.end(query.callback + '(JSON.parse(\'' + jsonData + '\'));');
+ } else if (!!callback) {
+   callback(JSON.parse(jsonData));
+ }
     });
-
+	
     stmt.finalize();
+   
+}
 
-
-});
-
-
-
+module.exports.getWax = getWax;
 var server = server.listen(12581); // This is just a sample script. Paste your real code (javascript or HTML) here.

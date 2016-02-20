@@ -8,6 +8,8 @@ var getWaxButton = document.getElementById("getWax");
 var brandsDiv = document.getElementById("brandsDiv");
 var brandCheckboxes = [];
 
+const remote = require('remote');
+const waxRest = remote.require('./REST/wax-rest');
 tempSlider.oninput = function() {
     tempCurDiv.innerHTML = this.value;
 };
@@ -57,15 +59,23 @@ conditionsForm.onsubmit = function() {
 
         }
     }
+   
+    var req = {};
+    
     var url = "http://localhost:12581/?" + "temperature=" + celsiusTemp + "&conditions=" + this.conditions.value + "&brands=" + brandString + "&callback=showWax";
-    var script_element = document.createElement('script');
+	 req.url = url; 
+	 var res = {};
+     waxRest.getWax(req,res, showWax);
+    console.log("called func" + res);
+    //var script_element = document.createElement('script');
 
     // Set its source to the JSONP API
-    script_element.src = url;
+    //script_element.src = url;
 
     // Stick the script element in the page <head>
-    document.getElementsByTagName('head')[0].appendChild(script_element);
+    //document.getElementsByTagName('head')[0].appendChild(script_element);
     //httpGetAsync(url, showWax);
+    
     return false;
 }
 
