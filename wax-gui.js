@@ -6,6 +6,7 @@ var tempMaxLabel = document.getElementById("tempMaxLabel");
 var conditionsForm = document.getElementById("conditionsForm");
 var getWaxButton = document.getElementById("getWax");
 var brandsDiv = document.getElementById("brandsDiv");
+var resultsText = document.getElementById("resultsText");
 var brandCheckboxes = [];
 
 const remote = require('remote');
@@ -81,7 +82,12 @@ conditionsForm.onsubmit = function() {
 
 function showWax(wax) {
     resultsDiv.className = "visibleResult";
-    resultsDiv.innerHTML += " " + wax.color;
+    
+    if (wax.brand === 'none') {
+    	resultsText.textContent = "No suitable wax found for these conditions";
+    } else {
+    	resultsText.textContent =  wax.brand + " " + wax.name;
+    }
     if (!!wax.picture) {
         var waxImage = document.getElementById("waxImage");
         waxImage.src = 'images/' + wax.picture;
