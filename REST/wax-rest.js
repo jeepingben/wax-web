@@ -33,6 +33,7 @@ var server = http.createServer(function(req, res) {
 	 
 	 if (!query.brands) {
 	 	res.end(query.callback + '(JSON.parse(\'' + NO_WAX + '\'));');
+	 	return;
 	 }
     //Build the brand string.  TODO - is this safe?
     var brandString = "(";
