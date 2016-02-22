@@ -1,9 +1,25 @@
 {
- "name":"waxChooser",
- "version":"0.0.1",
- "main":"main.js",
- "require":["sqlite3"],
- "scripts" : {
-	"start":"electron main.js"
- }
+  "name": "waxChooser",
+  "version": "0.0.1",
+  "main": "main.js",
+  "require": [
+    "sqlite3"
+  ],
+  "scripts": {
+    "start": "electron main.js",
+    "clean:linux": "rm -rf wax-web-linux-x64",
+    "clean:win32": "rm -rf wax-web-win32-x64",
+    "clean": "npm run clean:linux&&npm run clean:win32",
+    "build:linux": "electron-packager . wax-web --arch=x64 --platform=linux --version=0.36.8 --ignore=node_modules/electron-*",
+    "build:win32": "electron-packager . wax-web --arch=x64 --platform=win32 --version=0.36.8 --ignore=node_modules/electron-*",
+    "build": "npm run clean && npm run build:linux&&npm run build:win32",
+    "devDependencies": {
+      "electron-packager": "^5.2.1",
+      "electron-prebuilt": "^0.36.8",
+      "sqlite3": "^3.1.1"
+    }
+  },
+  "devDependencies": {
+    "sqlite3": "^3.1.1"
+  }
 }

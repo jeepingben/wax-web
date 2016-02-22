@@ -18,6 +18,10 @@ coverage
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
+# build packages
+wax-web-linux-x64
+wax-web-win32-x64
+
 # node-waf configuration
 .lock-wscript
 

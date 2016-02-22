@@ -15,7 +15,11 @@ var headers = {};
 
 function getWax(req,res, callback) {
 	var result = "";
-	var dbFile = "REST/waxdb.db";
+	var dbFile = "resources/app/REST/waxdb.db";
+	//Try the non-packaged location.  If that fails, just create an empty db
+	if (!fs.existsSync(dbFile)) {
+			dbFile = "REST/waxdb.db";
+	}
     var db = new sqlite3.Database(dbFile);
     //db.on('trace', function(stmt) {
     //	 console.log(stmt);
@@ -80,4 +84,4 @@ function getWax(req,res, callback) {
 }
 
 module.exports.getWax = getWax;
-var server = server.listen(12581); // This is just a sample script. Paste your real code (javascript or HTML) here.
+var server = server.listen(12581); 
