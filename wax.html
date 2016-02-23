@@ -42,17 +42,17 @@
 				</div>
             <div class="form-group" id=temperature>
                 Temperature
-                <div class="form-group" style="display:inline" >
                 
                 <center><label id='tempCurDiv' for='tempSlider' >0°F</label> 
                               
                  <input  id='tempSlider' type='range' min=-40 max=40 name='temperature'> </center>
                  
-                </div>
+                
             </div>
 
-            <div id='conditionsDiv' class='form-group form-control'>
+            <div id='conditionsDiv' class='form-group'>
                 Snow Conditions
+                <div class='form-control'>
                 <label class='checkbox-inline' for='snowTypeNew'>New</label>
                 <input id='snowTypeNew' type='radio' value='New' name='conditions' checked>
                 <label class='checkbox-inline' for='snowTypeTrans'>Transformed</label>
@@ -61,7 +61,7 @@
                 <input id='snowTypeIce' type='radio' value='Ice' name='conditions' checked>
                 <label class='checkbox-inline' for='snowTypeCorn'>Corn</label>
                 <input id='snowTypeCorn' type='radio' value='Corn' name='conditions' checked>
-                
+                </div>
             </div>
             <div class='form-group well'>
             <center><input id='getWax' class='btn btn-lg btn-primary' type=submit value='Get Wax' method='GET'></center>
