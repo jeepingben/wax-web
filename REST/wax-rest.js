@@ -2,7 +2,12 @@ var fs = require("fs");
 var sqlite3 = require("sqlite3").verbose();
 var http = require('http');
 var url = require('url');
-
+const NO_WAX = '{' +
+                '"color":"none",' +
+                '"brand":"none",' +
+                '"picture":"waxless.png",' +
+                '"name":"none"' +
+                '}';
 var server = http.createServer(function(req, res) {
     
 var headers = {};
@@ -37,7 +42,11 @@ function getWax(req,res, callback) {
     } else if (query.conditions === 'Ice' || query.conditions === 'Corn') {
         isKlister = 1;
     }
-
+	 
+	 if (!query.brands) {
+	 	res.end(query.callback + '(JSON.parse(\'' + NO_WAX + '\'));');
+	 	return;
+	 }
     //Build the brand string.  TODO - is this safe?
     var brandString = "(";
     var brands = query.brands.split(',');
@@ -64,12 +73,7 @@ function getWax(req,res, callback) {
                 '}';
 
         } else {
-            jsonData = '{' +
-                '"color":"none",' +
-                '"brand":"none",' +
-                '"picture":"waxless.png",' +
-                '"name":"none"' +
-                '}';
+            jsonData = NO_WAX;
         }
         
 	if (!!res.end) {
