@@ -1,5 +1,10 @@
 <head>
-    <link rel="stylesheet" href="wax.css">
+   
+     <link href="bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="bootstrap-theme.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="theme.css" rel="stylesheet">
     <meta charset="utf-8"/>
 	<link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="apple-touch-icon-60x60.png">
@@ -12,50 +17,66 @@
 	<meta name="theme-color" content="#ffffff">
 </head>
 <title>Wax Chooser</title>
-<body>
+<body role="document">
     <div id=header>
         <h1>Wax Chooser-web</h1>
     </div>
 
     <div id=conditionsDiv>
         <form id='conditionsForm'>
-            <div id='brandsDiv'>
-                Brands
+        		<div class='form-group'>
+        		Brands
+            <div id='brandsDiv' class="form-control">
+                
 
             </div>
+            </div>
+            <div class='form-group'>
+            Units
+            <div class='form-control'>
+            <label class='checkbox-inline ' for='unitsF'>Imperial</label>
             <input id='unitsF' type='radio' value='Imperial' name='units' checked>
-            <label for='unitsF'><span><span></span></span>Imperial</label>
+            <label class='checkbox-inline' for='unitsC'>Metric</label>
             <input id='unitsC' name='units' type='radio' value='Metric'>
-            <label for='unitsC'><span><span></span></span>Metric</label>
-
-            <div id=temperature>
+            </div>
+				</div>
+            <div class="form-group" id=temperature>
                 Temperature
-                <span id='tempMinLabel'>-40</span>
-                <input id='tempSlider' type='range' min=-40 max=40 name='temperature'><span id='tempMaxLabel'>40</span>
-                <div id='tempCurDiv'>0</div>
+                <div class="form-group" style="display:inline" >
+                
+                <center><label id='tempCurDiv' for='tempSlider' >0°F</label> 
+                              
+                 <input  id='tempSlider' type='range' min=-40 max=40 name='temperature'> </center>
+                 
+                </div>
             </div>
 
-            <div id='conditionsDiv'>
+            <div id='conditionsDiv' class='form-group form-control'>
                 Snow Conditions
-
+                <label class='checkbox-inline' for='snowTypeNew'>New</label>
                 <input id='snowTypeNew' type='radio' value='New' name='conditions' checked>
-                <label for='snowTypeNew'><span><span></span></span>New</label>
+                <label class='checkbox-inline' for='snowTypeTrans'>Transformed</label>
                 <input id='snowTypeTrans' type='radio' value='Transformed' name='conditions' checked>
-                <label for='snowTypeTrans'><span><span></span></span>Transformed</label>
+                <label class='checkbox-inline' for='snowTypeIce'>Ice</label>
                 <input id='snowTypeIce' type='radio' value='Ice' name='conditions' checked>
-                <label for='snowTypeIce'><span><span></span></span>Ice</label>
+                <label class='checkbox-inline' for='snowTypeCorn'>Corn</label>
                 <input id='snowTypeCorn' type='radio' value='Corn' name='conditions' checked>
-                <label for='snowTypeCorn'><span><span></span></span>Corn</label>
+                
             </div>
-            <input id='getWax' class='submitButton' type=submit value='Get Wax' method='GET'>
+            <div class='form-group well'>
+            <center><input id='getWax' class='btn btn-lg btn-primary' type=submit value='Get Wax' method='GET'></center>
+            </div>
         </form>
 
     </div>
 
-    <div id=resultsDiv class="hiddenResults">
+    <div id=resultsDiv class="hiddenResults" class="jumbotron">
+    <center>
         <img id='waxImage' src="" alt=""></img>
-        <div id='resultsText' class='resultText'></div>
+        <label id='resultsText' for='waxImage' class='resultText'></label>
+        </center>
     </div>
+    <script src="../bootstrap-without-jquery.min.js"></script>
 </body>
 
 <script src="wax-gui.js"></script>

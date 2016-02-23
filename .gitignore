@@ -23,6 +23,8 @@ coverage
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
+wax-web-linux-x64
+wax-web-win32-x64
 
 # Dependency directories
 node_modules

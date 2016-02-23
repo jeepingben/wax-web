@@ -2,7 +2,6 @@ var tempSlider = document.getElementById('tempSlider');
 var tempCurDiv = document.getElementById("tempCurDiv");
 var unitsF = document.getElementById("unitsF");
 var unitsC = document.getElementById("unitsC");
-var tempMaxLabel = document.getElementById("tempMaxLabel");
 var conditionsForm = document.getElementById("conditionsForm");
 var getWaxButton = document.getElementById("getWax");
 var brandsDiv = document.getElementById("brandsDiv");
@@ -10,7 +9,11 @@ var resultsText = document.getElementById("resultsText");
 var brandCheckboxes = [];
 
 tempSlider.oninput = function() {
-    tempCurDiv.innerHTML = this.value;
+	 var unit = "C";
+	 if (unitsF.checked) {
+	 	unit = "F";
+	 }
+    tempCurDiv.innerHTML = this.value + "°" + unit;
 };
 
 function fToC(degF) {
@@ -26,19 +29,22 @@ function buildBrandCheckboxes() {
 }
 
 function buildBrandCheckbox(name) {
+	 var newLabel = document.createElement('label');
+    newLabel.for = name + "Checkbox";
+    newLabel.innerHTML = name; 
+    newLabel.className = 'checkbox-inline';
+    brandsDiv.appendChild(newLabel);
     var newCB = document.createElement('input');
     newCB.type = 'checkbox';
     newCB.name = name + 'Checkbox';
     newCB.value = name;
     newCB.checked = true;
+    
     newCB.id = name + 'checkbox';
 
     brandCheckboxes.push(newCB);
     brandsDiv.appendChild(newCB);
-    var newLabel = document.createElement('label');
-    newLabel.for = name + "Checkbox";
-    newLabel.innerHTML = "<span><span></span></span>" + name; //magic forstylized checkboxes
-    brandsDiv.appendChild(newLabel);
+   
 }
 
 conditionsForm.onsubmit = function() {
@@ -71,7 +77,7 @@ conditionsForm.onsubmit = function() {
 }
 
 function showWax(wax) {
-    resultsDiv.className = "visibleResult";
+    resultsDiv.className = "jumbotron visibleResult";
     
     if (wax.brand === 'none') {
     	resultsText.textContent = "No suitable wax found for these conditions";
@@ -88,14 +94,12 @@ function showWax(wax) {
 
 function tempChange() {
 
-    if (this.value == "Imperial") {
-        tempMaxLabel.innerHTML = "40";
+    if (unitsF.checked) {
         tempSlider.max = 40;
     } else {
-        tempMaxLabel.innerHTML = "15";
         tempSlider.max = 15;
     }
-
+	tempSlider.oninput();
 }
 unitsC.onclick = tempChange;
 unitsF.onclick = tempChange;
