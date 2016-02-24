@@ -49,7 +49,7 @@ function buildBrandCheckbox(name) {
 
 conditionsForm.onsubmit = function() {
     var celsiusTemp = this.temperature.value;
-    if (this.units.value == "Imperial") {
+    if (this.unitsF.checked ) {
 
         celsiusTemp = fToC(this.temperature.value);
     }
@@ -64,7 +64,17 @@ conditionsForm.onsubmit = function() {
 
         }
     }
-    var url = "http://localhost:12581/?" + "temperature=" + celsiusTemp + "&conditions=" + this.conditions.value + "&brands=" + brandString + "&callback=showWax";
+    var condition;
+    var conditionsElements = conditionsForm.elements['conditions'];
+    for (i=0; i < conditionsElements.length; i++)
+    {
+    	if (conditionsElements[i].checked)
+    	{
+    		condition = conditionsElements[i].value;
+    		break;
+    	}
+    }
+    var url = "http://localhost:12581/?" + "temperature=" + celsiusTemp + "&conditions=" + condition + "&brands=" + brandString + "&callback=showWax";
     var script_element = document.createElement('script');
 
     // Set its source to the JSONP API
