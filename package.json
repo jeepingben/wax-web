@@ -9,17 +9,15 @@
     "start": "electron main.js",
     "clean:linux": "rm -rf wax-web-linux-x64",
     "clean:win32": "rm -rf wax-web-win32-x64",
-    "clean": "npm run clean:linux&&npm run clean:win32",
+    "clean": "npm run clean:linux && npm run clean:win32",
     "build:linux": "electron-packager . wax-web --arch=x64 --platform=linux --version=0.36.8 --ignore=node_modules/electron-*",
     "build:win32": "electron-packager . wax-web --arch=x64 --platform=win32 --version=0.36.8 --ignore=node_modules/electron-*",
-    "build": "npm run clean && npm run build:linux&&npm run build:win32",
-    "devDependencies": {
-      "electron-packager": "^5.2.1",
-      "electron-prebuilt": "^0.36.8",
-      "sqlite3": "^3.1.1"
-    }
+    "build": "npm run clean && npm run build:linux&&npm run build:win32"
   },
   "devDependencies": {
+    "electron-packager": "^5.2.1",
+    "electron-prebuilt": "^0.36.8",
+    "npmlog": "^2.0.2",
     "sqlite3": "^3.1.1"
   }
 }
