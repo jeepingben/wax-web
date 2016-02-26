@@ -73,16 +73,7 @@ conditionsForm.onsubmit = function() {
 	 req.url = url; 
 	 var res = {};
      waxRest.getWax(req,res, showWax);
-    console.log("called func" + res);
-    //var script_element = document.createElement('script');
 
-    // Set its source to the JSONP API
-    //script_element.src = url;
-
-    // Stick the script element in the page <head>
-    //document.getElementsByTagName('head')[0].appendChild(script_element);
-    //httpGetAsync(url, showWax);
-    
     return false;
 }
 
