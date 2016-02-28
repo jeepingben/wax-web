@@ -88,4 +88,3 @@ function getWax(req,res, callback) {
 }
 
 module.exports.getWax = getWax;
-var server = server.listen(12581); 
